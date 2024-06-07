@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Nalla Unblocker</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/NU.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/uv/sw.js", {
+                    scope: __uv$config.prefix,
+                });
+            });
+        }
+    </script>
+    <style>
+        #iframeWindow {
+           position: absolute;
+           width: 100vw;
+           height: 100vh;
+           top: 0;
+           left: 0;
+           z-index: 1000;
+           display: none;
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/NU.png" alt="Nalla Unblocker" width="55px" height="55px"
+                    style="border-radius: 3px;"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="games"><i class="fas fa-gamepad"></i> Games</a></li>
+                <li><a href="tabs"><i class="fas fa-network-wired"></i> Proxy</a></li>
+                <li><a href="settings"><i class="fas fa-cogs"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+    <section id="proxy">
+        <h1 class="title">Tabs</h1>
+        <input type="search" name="search" id="proxy_search" placeholder="Search Google or Type URL">
+        <p id="splashT"></p>
+    </section>
+
+    <iframe src="" frameborder="0" id="iframeWindow"></iframe>
+
+    <section id="engine_popup" style="display: none;">
+        <h3>Select a Search Engine</h3>
+        <p>Not Available yet!!</p>
+        <div id="engine_list">
+            <button>Google</button>
+            <button>DuckDuckGo</button>
+            <button>Yahoo</button>
+            <button>Bing</button>
+        </div>
+    </section>
+    <script src="example.js"></script>
+    <script src="assets/js/storage.js"></script>
+</body>
+</html>

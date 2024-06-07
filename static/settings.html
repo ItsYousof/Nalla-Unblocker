@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Nalla Unblocker</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/NU.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/NU.png" alt="Nalla Unblocker" width="55px" height="55px"
+                    style="border-radius: 3px;"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="games"><i class="fas fa-gamepad"></i> Games</a></li>
+                <li><a href="tabs"><i class="fas fa-network-wired"></i> Proxy</a></li>
+                <li><a href="settings"><i class="fas fa-cogs"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section>
+        <h1 class="title">Settings</h1>
+        <div class="settings-container">
+            <div class="setting">
+                <h3>Clock Tab</h3>
+                <input type="name" id="clockTab">
+                <p>Enter the name of your clock tab.</p>
+                <button id="clockTabBtn"> <i class="fas fa-save"></i> Save</button>
+            </div>
+            <div class="setting">
+                <h3>About:Blank Clock</h3>
+                <p>Disguises the page in a about:blank link.</p>
+                <button id="proxyTabBtn" onclick="aboutBlank()"> <i class="fas fa-arrow-right"></i> Go!</button>
+            </div>
+            <div class="setting">
+                <h3>Tab Icon</h3>
+                <input type="name" id="tabIcon" placeholder="Enter Link to Icon">
+                <p>Enter the name of your tab icon.</p>
+                <button id="tabIconBtn"> <i class="fas fa-save"></i> Save</button>
+            </div>
+            <!-- <div class="setting">
+                <h3>Login</h3>
+                <input type="text" id="username">
+                <input type="password" id="password">
+                <button>Save & Enable</button>
+                <p>Will enable the login screen apon you enter the website.</p>
+            </div> -->
+        </div>
+    </section>
+    <div class="overlay"></div>
+
+    <section id="loginPopup" style="display: none;">
+        <h1 class="title">Login</h1>
+        <input type="text" name="username" id="loginUsername">
+        <input type="password" name="password" id="loginPassword">
+        <button id="loginBtn">Login</button>
+        <p id="error-message"></p>
+        <p>Enter your username and password</p>
+    </section>
+    <script src="assets/js/storage.js"></script>
+</body>
+</html>
