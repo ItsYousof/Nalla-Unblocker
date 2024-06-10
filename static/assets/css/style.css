@@ -24,7 +24,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
+    background-color: #1a1a1a;
     color: #fff;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -231,6 +231,7 @@ section p {
 }
 
 .games input {
+    font-family: Poppins;
     padding: 10px;
     border: 1px solid #333;
     border-radius: 5px;
@@ -540,4 +541,35 @@ section p {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
     display: none;
+}
+
+#ads-container {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.ad {
+    border: 1px solid #ccc;
+        padding: 20px;
+        background: white;
+        width: 300px;
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: slide-in 1s forwards;
+    border-radius: 5px;
+}
+
+.ad a {
+    text-decoration: none;
+    text-align: center;
+}
+
+@keyframes slide-in {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
