@@ -20,6 +20,7 @@
                 });
             });
         }
+        localStorage.setItem('engine', 'https://google.com/search?q=');
     </script>
     <style>
         #iframeWindow {
@@ -61,12 +62,12 @@
 
     <section id="engine_popup" style="display: none;">
         <h3>Select a Search Engine</h3>
-        <p>Not Available yet!!</p>
+        <p>Google is defualted!</p>
         <div id="engine_list">
-            <button>Google</button>
-            <button>DuckDuckGo</button>
-            <button>Yahoo</button>
-            <button>Bing</button>
+            <button onclick="localStorage.setItem('engine', 'https://google.com/search?q=')">Google</button>
+            <button onclick="localStorage.setItem('engine', 'https://duckduckgo.com/?q=')">DuckDuckGo</button>
+            <button onclick="localStorage.setItem('engine', 'https://search.yahoo.com/search?p=')">Yahoo</button>
+            <button onclick="localStorage.setItem('engine', 'https://bing.com/search?q=')">Bing</button>
         </div>
     </section>
     <script src="example.js"></script>

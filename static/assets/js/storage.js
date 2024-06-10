@@ -1,59 +1,28 @@
-document.getElementById("clockTabBtn").onclick = function () {
-    let tabName = document.getElementById("clockTab").value;   
-    localStorage.setItem("tabName", tabName);
-    document.title = tabName;
+function clockTab() {
+    let title = document.getElementById("clockTab").value;
+    document.title = title;
+    localStorage.setItem("clockTab", title);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    let tabName = localStorage.getItem("tabName");
-    if (tabName) {
-        document.getElementById("clockTab").value = tabName;
-        document.title = tabName;
+function clockTabIcon() { 
+    let link = document.querySelector("link[rel*='icon']");
+
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
     }
-});
 
-function aboutBlank() { 
-    let windowOld = window.open('about:blank', '_self');
-    windowOld.location.href = 'https://google.com';
-    let windowLink = window.location.href;
-    let windowNew = window.open('about:blank', '_blank');
-    windowNew.document.write('<iframe src="' + windowLink + '" style="width: 100%; height: 100%; border: none !important;"></iframe><style>body { margin: 0; }</style>');
-    windowNew.document.title = "Google Drive - My Drive";
-}
+    link.href = document.getElementById("tabIcon").value;
 
-document.getElementById("tabIconBtn").onclick = function () {
-    let tabIconLink = document.getElementById("tabIcon").value;
-
-    if (tabIconLink) {
-        localStorage.setItem("tabIconLink", tabIconLink);
-
-        document.querySelector("link[rel*='icon']").href = localStorage.getItem("tabIconLink");
-    } else {
-        
-    }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    let tabIconLink = localStorage.getItem("tabIconLink");
-    if (tabIconLink) {
-        document.querySelector("link[rel*='icon']").href = localStorage.getItem("tabIconLink");
-    }
-});
-
-document.getElementById("loginBtn").onclick = function () {
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-
-    if (username && password) {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
-
-        localStorage.setItem("screen", true);
-    }else{
-        alert("Please enter username and password");
-    }
+    localStorage.setItem("tabIcon", document.getElementById("tabIcon").value);
+    window.location.reload();
 };
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.title = localStorage.getItem("clockTab");
+    document.querySelector("link[rel*='icon']").href = localStorage.getItem("tabIcon");
+    console.log("%cNalla Worker", "color:#ffa500; font-weight:600;", "Loaded Settings JS File");
+});

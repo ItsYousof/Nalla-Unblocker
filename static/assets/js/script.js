@@ -4,7 +4,7 @@ document // makes it so you can press enter to submit as opposed to just being a
         if (event.key === "Enter") {
             event.preventDefault();
             let url = document.getElementById("proxy_search").value; // If no periods are detected in the input, search google instead
-            let searchUrl = "https://www.google.com/search?q=";
+            let searchUrl = localStorage.getItem("engine");
 
             if (!url.includes(".")) {
                 url = searchUrl + encodeURIComponent(url);
@@ -32,3 +32,10 @@ document // makes it so you can press enter to submit as opposed to just being a
             win.document.body.style.overflow = "hidden";
         }
     });
+
+
+function playGame(url) {
+    document.getElementById("iframeWindow1").src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    document.getElementById("iframeWindow1").style.display = "block";
+
+}
