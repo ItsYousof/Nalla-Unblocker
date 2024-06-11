@@ -15,6 +15,10 @@ app.get("/", (req, res) => {
     res.sendFile(join(__dirname, publicPath, "index.html"));
 });
 
+app.get('/service', (req, res) => {
+    res.sendFile(join(__dirname, publicPath, "service.html"));
+})
+
 app.get("/home", (req, res) => {
     res.sendFile(join(__dirname, publicPath, "index.html"));
 })
