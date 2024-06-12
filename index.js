@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/static'));
 app.use(cors());
+const publicPath = "static";
 
 server.on('request', (req, res) => {
     if (bareServer.shouldRoute(req)) {
