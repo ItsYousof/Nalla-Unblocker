@@ -11,6 +11,27 @@ const publicPath = "static"; // if you renamed your directory to something else 
 
 app.use(express.static(publicPath));
 
+
+
+const server = createServer();
+
+server.on("request", (req, res) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeRequest(req, res);
+    } else {
+        app(req, res);
+    }
+});
+
+server.on("upgrade", (req, socket, head) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeUpgrade(req, socket, head);
+    } else {
+        socket.end();
+    }
+});
+
+
 app.get("/", (req, res) => {
     res.sendFile(join(__dirname, publicPath, "index.html"));
 });
@@ -37,24 +58,6 @@ app.get('/settings', (req, res) => {
 
 app.get('/apps', (req, res) => {
     res.sendFile(join(__dirname, publicPath, 'apps.html'));
-});
-
-const server = createServer();
-
-server.on("request", (req, res) => {
-    if (bare.shouldRoute(req)) {
-        bare.routeRequest(req, res);
-    } else {
-        app(req, res);
-    }
-});
-
-server.on("upgrade", (req, socket, head) => {
-    if (bare.shouldRoute(req)) {
-        bare.routeUpgrade(req, socket, head);
-    } else {
-        socket.end();
-    }
 });
 
 let port = parseInt(process.env.PORT || "");
