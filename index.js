@@ -12,7 +12,7 @@ const bareServer = createBareServer('/b/');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/statuc'));
+app.use(express.static(__dirname + '/static'));
 app.use(cors());
 
 server.on('request', (req, res) => {
