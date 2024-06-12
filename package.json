@@ -6,5 +6,9 @@
         "@tomphttp/bare-server-node": "^2.0.1",
         "express": "^4.19.2"
     },
+    "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+    },
     "type": "module"
 }
