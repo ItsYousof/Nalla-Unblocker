@@ -1,39 +1,42 @@
-import { createBareServer } from "@tomphttp/bare-server-node";
-import express from "express";
-import { createServer } from "node:http";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
+import express from 'express';
+import http from 'node:http';
+import { createBareServer } from '@tomphttp/bare-server-node';
+import cors from 'cors';
+import path from "path";
+import { hostname } from "node:os"
 
-const __dirname = join(fileURLToPath(import.meta.url), "..");
-const bare = createBareServer("/bare/");
-const app = express();
-const publicPath = "static"; // if you renamed your directory to something else other than public
+const server = http.createServer();
+const app = express(server);
+const __dirname = process.cwd();
+const bareServer = createBareServer('/b/');
 
-app.use(express.static(publicPath));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/statuc'));
+app.use(cors());
 
-
-
-const server = createServer();
-
-server.on("request", (req, res) => {
-    if (bare.shouldRoute(req)) {
-        bare.routeRequest(req, res);
+server.on('request', (req, res) => {
+    if (bareServer.shouldRoute(req)) {
+        bareServer.routeRequest(req, res)
     } else {
-        app(req, res);
+        app(req, res)
     }
+})
+
+server.on('upgrade', (req, socket, head) => {
+    if (bareServer.shouldRoute(req)) {
+        bareServer.routeUpgrade(req, socket, head)
+    } else {
+        socket.end()
+    }
+})
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(process.cwd(), '/static/index.html'));
 });
 
-server.on("upgrade", (req, socket, head) => {
-    if (bare.shouldRoute(req)) {
-        bare.routeUpgrade(req, socket, head);
-    } else {
-        socket.end();
-    }
-});
-
-
-app.get("/", (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "index.html"));
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(process.cwd(), '/static/index.html'));
 });
 
 app.get('/service', (req, res) => {
@@ -60,19 +63,21 @@ app.get('/apps', (req, res) => {
     res.sendFile(join(__dirname, publicPath, 'apps.html'));
 });
 
-let port = parseInt(process.env.PORT || "");
 
-if (isNaN(port)) port = 8080; // set your port
-
-server.on("listening", () => {
+const PORT = 3000;
+server.on('listening', () => {
     const address = server.address();
+
     console.log("Listening on:");
     console.log(`\thttp://localhost:${address.port}`);
+    console.log(`\thttp://${hostname()}:${address.port}`);
     console.log(
         `\thttp://${address.family === "IPv6" ? `[${address.address}]` : address.address
         }:${address.port}`
     );
-});
+})
+
+server.listen({ port: PORT, })
 
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
@@ -80,10 +85,6 @@ process.on("SIGTERM", shutdown);
 function shutdown() {
     console.log("SIGTERM signal received: closing HTTP server");
     server.close();
-    bare.close();
+    bareServer.close();
     process.exit(0);
 }
-
-server.listen({
-    port,
-});
