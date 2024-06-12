@@ -18,11 +18,3 @@ function clockTabIcon() {
     localStorage.setItem("tabIcon", document.getElementById("tabIcon").value);
     window.location.reload();
 };
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.title = localStorage.getItem("clockTab");
-    document.querySelector("link[rel*='icon']").href = localStorage.getItem("tabIcon");
-    console.log("%cNalla Worker", "color:#ffa500; font-weight:600;", "Loaded Settings JS File");
-});
