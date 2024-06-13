@@ -33,35 +33,35 @@ server.on('upgrade', (req, socket, head) => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/static/index.html'));
+    res.sendFile(path.join(process.cwd(), '/public/index.html'));
 });
 
 app.get('/index', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/static/index.html'));
+    res.sendFile(path.join(process.cwd(), '/public/index.html'));
 });
 
 app.get('/service', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "/static/service.html"));
+    res.sendFile(join(__dirname, publicPath, "/public/service.html"));
 })
 
 app.get("/home", (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "/static/index.html"));
+    res.sendFile(join(__dirname, publicPath, "/public/index.html"));
 })
 
 app.get('/games', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/static/games.html'));
+    res.sendFile(join(__dirname, publicPath, '/public/games.html'));
 });
 
 app.get('/tabs', (req, res) => { 
-    res.sendFile(join(__dirname, publicPath, '/static/tabs.html'));
+    res.sendFile(join(__dirname, publicPath, '/public/tabs.html'));
 });
 
 app.get('/settings', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/static/settings.html'));
+    res.sendFile(join(__dirname, publicPath, '/public/settings.html'));
 });
 
 app.get('/apps', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/static/apps.html'));
+    res.sendFile(join(__dirname, publicPath, '/public/apps.html'));
 });
 
 
