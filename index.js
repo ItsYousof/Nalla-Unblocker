@@ -41,27 +41,27 @@ app.get('/index', (req, res) => {
 });
 
 app.get('/service', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "service.html"));
+    res.sendFile(join(__dirname, publicPath, "/static/service.html"));
 })
 
 app.get("/home", (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "index.html"));
+    res.sendFile(join(__dirname, publicPath, "/static/index.html"));
 })
 
 app.get('/games', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, 'games.html'));
+    res.sendFile(join(__dirname, publicPath, '/static/games.html'));
 });
 
 app.get('/tabs', (req, res) => { 
-    res.sendFile(join(__dirname, publicPath, 'tabs.html'));
+    res.sendFile(join(__dirname, publicPath, '/static/tabs.html'));
 });
 
 app.get('/settings', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, 'settings.html'));
+    res.sendFile(join(__dirname, publicPath, '/static/settings.html'));
 });
 
 app.get('/apps', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, 'apps.html'));
+    res.sendFile(join(__dirname, publicPath, '/static/apps.html'));
 });
 
 
