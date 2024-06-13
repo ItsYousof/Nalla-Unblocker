@@ -9,6 +9,7 @@ const server = http.createServer();
 const app = express(server);
 const __dirname = process.cwd();
 const bareServer = createBareServer('/b/');
+const publicPath = "public";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,35 +33,35 @@ server.on('upgrade', (req, socket, head) => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/index.html'));
+    res.sendFile(path.join(process.cwd(), '/index.html'));
 });
 
 app.get('/index', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/index.html'));
+    res.sendFile(path.join(process.cwd(), '/index.html'));
 });
 
 app.get('/service', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "/public/service.html"));
+    res.sendFile(path.join(__dirname, publicPath, "/service.html"));
 })
 
 app.get("/home", (req, res) => {
-    res.sendFile(join(__dirname, publicPath, "/public/index.html"));
+    res.sendFile(path.join(__dirname, publicPath, "/index.html"));
 })
 
 app.get('/games', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/public/games.html'));
+    res.sendFile(path.join(__dirname, publicPath, '/games.html'));
 });
 
 app.get('/tabs', (req, res) => { 
-    res.sendFile(join(__dirname, publicPath, '/public/tabs.html'));
+    res.sendFile(path.join(__dirname, publicPath, '/tabs.html'));
 });
 
 app.get('/settings', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/public/settings.html'));
+    res.sendFile(path.join(__dirname, publicPath, '/settings.html'));
 });
 
 app.get('/apps', (req, res) => {
-    res.sendFile(join(__dirname, publicPath, '/public/apps.html'));
+    res.sendFile(path.join(__dirname, publicPath, '/apps.html'));
 });
 
 
