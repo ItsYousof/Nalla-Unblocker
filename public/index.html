@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="games"><i class="fas fa-gamepad"></i> Games</a></li>
-                <li><a href="tabs"><i class="fas fa-network-wired"></i> Proxy</a></li>
+                <li><a href="tabs"><i class="fas fa-network-wired"></i> Tabs</a></li>
                 <li><a href="settings"><i class="fas fa-cogs"></i> Settings</a></li>
             </ul>
         </nav>
@@ -60,15 +60,23 @@
     </section>
     <section>
         <footer>
-            <p>&copy; 2021 Nalla Unblocker. All rights reserved.</p>
+            <p>&copy; 2024 Nalla Unblocker. All rights reserved.</p>
         </footer>
         <div id="clock" style="margin: 0;">
             <div class="time" id="time"></div>
         </div>
     </section>
+    <div id="credits-overlay">
+        <div class="popup">
+            <h1>Credits</h1>
+            <p>Contributors: Crllect & Wick</p>
+            <p>Designer: NallaBalls</p>
+            <p>Thanks for using Nalla Unblocker</p>
+            <button class="close-btn" onclick="closeCredits()">Close</button>
+        </div>
+    </div>
     <div id="ads-container"></div>
     
-    <script src="assets/js/ads.js"></script>
     <script src="assets/js/script.js"></script>
    <script src="assets/js/storage.js"></script>
    <script>
@@ -86,6 +94,13 @@
            document.getElementById('time').innerHTML = time;
        }
        setInterval(getTime, 1000);
+       function showCredits() {
+            document.getElementById('credits-overlay').style.display = 'flex';
+        }
+
+        function closeCredits() {
+            document.getElementById('credits-overlay').style.display = 'none';
+        }
    </script>
 </body>
 </html>
