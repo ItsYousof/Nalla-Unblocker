@@ -25,20 +25,32 @@ if (window.location.href.includes('tabs')) {
 }
 
 document.addEventListener('keydown', function (event) {
-    if (event.key === 13) {
-        if (document.getElementById("engine_popup").style.display === "block") {
-            document.getElementById("engine_popup").style.display = "none";
+    if (event.altKey && event.key === "e") { // Check if Alt key and 'e' key are pressed together
+        var enginePopup = document.getElementById("engine_popup");
+        if (enginePopup.style.display === "block") {
+            enginePopup.style.display = "none";
         } else {
-            document.getElementById("engine_popup").style.display = "block";
+            enginePopup.style.display = "block";
         }
     }
 });
 
+document.addEventListener('keydown', function (event) {
+    var enginePopup = document.getElementById("engine_popup");
+
+    // Check for Windows/Linux (Alt + E) or macOS (Command + E)
+    if ((event.altKey && event.key === "e") || (event.metaKey && event.key === "e")) {
+        if (enginePopup.style.display === "block") {
+            enginePopup.style.display = "none";
+        } else {
+            enginePopup.style.display = "block";
+        }
+    }
+});
+
+
+
 function playGame(url) {
-    document.getElementById("iframeWindow1").src = __uv$config.prefix + __uv$config.encodeUrl(url);
-    document.getElementById("iframeWindow1").style.display = "block";
-    document.getElementById("iframeWindow1").focus;
-    
     window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
 }
 

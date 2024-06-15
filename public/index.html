@@ -58,10 +58,34 @@
             </div>
         </div>
     </section>
+    <section>
+        <footer>
+            <p>&copy; 2021 Nalla Unblocker. All rights reserved.</p>
+        </footer>
+        <div id="clock" style="margin: 0;">
+            <div class="time" id="time"></div>
+        </div>
+    </section>
     <div id="ads-container"></div>
     
     <script src="assets/js/ads.js"></script>
     <script src="assets/js/script.js"></script>
    <script src="assets/js/storage.js"></script>
+   <script>
+       function getTime() {
+           var date = new Date();
+           var hours = date.getHours();
+           var minutes = date.getMinutes();
+           var seconds = date.getSeconds();
+           var ampm = hours >= 12 ? 'PM' : 'AM';
+           hours = hours % 12;
+           hours = hours ? hours : 12;
+           minutes = minutes < 10 ? '0' + minutes : minutes;
+           seconds = seconds < 10 ? '0' + seconds : seconds;
+           var time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+           document.getElementById('time').innerHTML = time;
+       }
+       setInterval(getTime, 1000);
+   </script>
 </body>
 </html>

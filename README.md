@@ -8,4 +8,10 @@
 - Our Games
 
 ## Key Features
-yet to be finished
+- Clean Web Design
+- Customizable Settings
+- Working Proxy
+- Games & Apps
+- Fun & Joy
+
+## Deployment Methods 
