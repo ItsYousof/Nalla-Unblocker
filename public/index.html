@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nalla Unblocker</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/images/NU.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/uv/sw.js", {
+                    scope: __uv$config.prefix,
+                });
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Nalla Unblocker</h1>
+        <div class="search-container">
+            <input type="search" id="proxy_search" placeholder="Search or enter URL">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="quick-actions">
+            <button id="engineSelect"><i class="fas fa-cog"></i> Engine</button>
+            <button id="settingsBtn"><i class="fas fa-sliders-h"></i> Settings</button>
+        </div>
+    
+    <div class="games-container">
+        <h2>Games:</h2>
+        <div class="game-card">
+            <img src="assets/images/games/Time Shooter 3 .jpeg" alt="Game 1">
+            <h3>Time Shooter 3</h3>
+            <button class="play-btn" onclick="playGame('https://html5.gamedistribution.com/rvvASMiM/6493b872f0564380a7adad671d1e0a57/index.html?gd_sdk_referrer_url=https%3A%2F%2Fgamedistribution.com%2Fgames%2Ftime-shooter-3%3A-swat&gd_zone_config=eyJwYXJlbnRVUkwiOiJodHRwczovL2dhbWVkaXN0cmlidXRpb24uY29tL2dhbWVzL3RpbWUtc2hvb3Rlci0zOi1zd2F0IiwicGFyZW50RG9tYWluIjoiZ2FtZWRpc3RyaWJ1dGlvbi5jb20iLCJ0b3BEb21haW4iOiJkb3JkbGUuaW8iLCJoYXNJbXByZXNzaW9uIjpmYWxzZSwibG9hZGVyRW5hYmxlZCI6dHJ1ZSwiaG9zdCI6Imh0bWw1LmdhbWVkaXN0cmlidXRpb24uY29tIiwidmVyc2lvbiI6IjEuNS4xNyJ9')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/images/games/stickman.jpeg" alt="Game 1">
+            <h3>Stickman</h3>
+            <button class="play-btn" onclick="playGame('https://stickman.pro/iframe/index.html')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/images/games/Tiny Fishing.avif" alt="Game 1">
+            <h3>Tiny Fishing</h3>
+            <button class="play-btn" onclick="playGame('https://tiny-fishing.github.io/games/tinyfishing.html')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/images/games/Cookie Clicker.png" alt="Game 1">
+            <h3>Cookie Clicker</h3>
+            <button class="play-btn" onclick="playGame('https://orteil.dashnet.org/cookieclicker/')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/images/games/1v1lol.png" alt="Game 1">
+            <h3>1v1.lol</h3>
+            <button class="play-btn" onclick="playGame('https://1v1.lol/')">Play</button>
+        </div>
+
+        <h2>Apps:</h2>
+        <div class="game-card">
+            <img src="assets/apps/discord.original.jpg" alt="Game 1">
+            <h3>Discord</h3>
+            <button class="play-btn" onclick="playGame('https://discord.com/')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/apps/geforce.jpeg" alt="Game 1">
+            <h3>GeForce NOW</h3>
+            <button class="play-btn" onclick="playGame('https://www.nvidia.com/en-us/geforce-now/')">Play</button>
+        </div>
+        <div class="game-card">
+            <img src="assets/apps/roblox.png" alt="Game 1">
+            <h3>Roblox</h3>
+            <button class="play-btn" onclick="playGame('https://www.roblox.com/')">Play</button>
+        </div>
+    </div>
+        <!-- Add this inside the overlay div, after the quick-actions div -->
+        <div id="settingsPopup" class="popup">
+            <div class="popup-content">
+                <h2>Settings</h2>
+                <div class="setting-option">
+                    <label for="themeToggle">Theme:</label>
+                    <select id="themeToggle">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+                <div class="setting-option">
+                    <label for="colorTheme">Color Theme:</label>
+                    <select id="colorTheme">
+                        <option value="default">Default</option>
+                        <option value="ocean">Ocean</option>
+                        <option value="forest">Forest</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="lavender">Lavender</option>
+                    </select>
+                </div>
+                <button id="closeSettings">Close</button>
+            </div>
+        </div>
+    </div>
+    <iframe src="" frameborder="0" id="iframeWindow"></iframe>
+
+    <div id="enginePopup" class="popup">
+        <div class="popup-content">
+            <h2>Select Search Engine</h2>
+            <button class="engine-btn" data-engine="https://www.google.com/search?q=">Google</button>
+            <button class="engine-btn" data-engine="https://www.bing.com/search?q=">Bing</button>
+            <button class="engine-btn" data-engine="https://search.brave.com/search?q=">Brave</button>
+            <button class="engine-btn" data-engine="https://duckduckgo.com/?q=">DuckDuckGo</button>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #8c7ae6;
+    --secondary-color: #9c88ff;
+    --text-color: #f5f6fa;
+    --background-color: #1e272e;
+    --input-background: #2f3640;
+    --input-text-color: #dcdde1;
+    --transition: all 0.3s ease;
+}
+
+/* Light theme */
+body.light-theme {
+    --text-color: #2d3436;
+    --background-color: #f5f6fa;
+    --input-background: #dfe6e9;
+    --input-text-color: #2d3436;
+}
+
+/* Ocean theme */
+body.ocean-theme {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+}
+
+/* Forest theme */
+body.forest-theme {
+    --primary-color: #27ae60;
+    --secondary-color: #2ecc71;
+}
+
+/* Sunset theme */
+body.sunset-theme {
+    --primary-color: #e74c3c;
+    --secondary-color: #c0392b;
+}
+
+/* Lavender theme */
+body.lavender-theme {
+    --primary-color: #9b59b6;
+    --secondary-color: #8e44ad;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+}
+
+#proxy_search {
+    flex-grow: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    background-color: var(--input-background);
+    color: var(--input-text-color);
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#proxy_search::placeholder {
+    color: #718093;
+}
+
+#search-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#search-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.quick-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.quick-actions button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-actions button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+#iframeWindow {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--input-background);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-content h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.engine-btn, #closePopup {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.engine-btn:hover, #closePopup:hover {
+    background-color: var(--primary-color);
+}
+
+#closePopup {
+    margin-top: 1rem;
+    background-color: var(--primary-color);
+}
+
+#closePopup:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Add styles for the settings popup */
+#settingsPopup .popup-content {
+    max-width: 300px;
+}
+
+.setting-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.setting-option label {
+    margin-right: 1rem;
+}
+
+.setting-option select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    border: none;
+}
+
+#closeSettings {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#closeSettings:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    #proxy_search, #search-btn {
+        border-radius: 50px;
+        width: 100%;
+    }
+
+    #search-btn {
+        margin-top: 0.5rem;
+    }
+}
+
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.games-container h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-card {
+    background-color: var(--input-background);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
+    min-height: 250px;
+    max-height: fit-content;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.game-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.game-card-content {
+    padding: 1rem;
+}
+
+.game-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.game-card p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.play-btn {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.play-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .games-container {
+        padding: 1rem;
+    }
+
+    .game-card {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .game-card {
+        width: 100%;
+    }
+}
