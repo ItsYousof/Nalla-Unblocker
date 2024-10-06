@@ -137,7 +137,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function playGame(url) {
-    document.getElementById("iframeWindow").src = __uv$config.prefix + __uv$config.encodeUrl(url);
-    document.getElementById("iframeWindow").style.display = "block";
-    document.getElementById("iframeWindow").focus();
+    window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
 }
